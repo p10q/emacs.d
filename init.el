@@ -44,6 +44,8 @@
                    (*linux* nil)
                    (t nil)))
 
+(setq evil-want-C-u-scroll t)
+
 (defconst my-emacs-d (file-name-as-directory user-emacs-directory)
   "Directory of emacs.d")
 
