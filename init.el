@@ -187,3 +187,5 @@
 ;;; no-byte-compile: t
 ;;; End:
 (put 'erase-buffer 'disabled nil)
+
+(load-theme 'solarized-light t)

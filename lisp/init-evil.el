@@ -234,7 +234,7 @@ If the character before and after CH is space or tab, CH is NOT slash"
 ;; {{ https://github.com/syl20bnr/evil-escape
 (setq-default evil-escape-delay 0.3)
 (setq evil-escape-excluded-major-modes '(dired-mode))
-(setq-default evil-escape-key-sequence "kj")
+(setq-default evil-escape-key-sequence "fd")
 ;; disable evil-escape when input method is on
 (evil-escape-mode 1)
 ;; }}
@@ -576,7 +576,9 @@ If INCLUSIVE is t, the text object is inclusive."
   "gl" 'my-git-log-trace-definition ; find history of a function or range
   "sh" 'my-select-from-search-text-history
   "rjs" 'run-js
-  "jsr" 'js-send-region
+  "er" 'js-send-region
+  "eb" 'js-send-buffer
+  "ee" 'js-send-last-sexp
   "jsb" 'js-clear-send-buffer
   "kb" 'kill-buffer-and-window ;; "k" is preserved to replace "C-g"
   "ls" 'highlight-symbol
@@ -916,6 +918,7 @@ If INCLUSIVE is t, the text object is inclusive."
 ;; bind evil-forward/backward-args
 (define-key evil-normal-state-map "L" 'evil-forward-arg)
 (define-key evil-normal-state-map "H" 'evil-backward-arg)
+(define-key evil-normal-state-map ";" 'evil-ex)
 (define-key evil-motion-state-map "L" 'evil-forward-arg)
 (define-key evil-motion-state-map "H" 'evil-backward-arg)
 
@@ -971,5 +974,24 @@ If INCLUSIVE is t, the text object is inclusive."
   ;; Cursor is always black because of evil.
   ;; Here is the workaround
   (setq evil-default-cursor t))
+
+(define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
+(define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
+(define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
+(define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
+;(define-key evil-normal-state-map (kbd "C-f") #'+ivy/project-search)
+(define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
+
+(with-eval-after-load 'neotree
+  (define-key neotree-mode-map (kbd "R") 'neotree-change-root)
+  (define-key neotree-mode-map (kbd "j") 'neotree-next-line)
+  (define-key neotree-mode-map (kbd "l") 'neotree-enter)
+  (define-key neotree-mode-map (kbd "h") 'neotree-select-previous-sibling-node)
+  (define-key neotree-mode-map (kbd "c") 'neotree-create-node)
+  (define-key neotree-mode-map (kbd "r") 'neotree-rename-node)
+  (define-key neotree-mode-map (kbd "d") 'neotree-delete-node)
+  (define-key neotree-mode-map (kbd "H") 'neotree-hidden-file-toggle)
+  (define-key neotree-mode-map (kbd "k") 'neotree-previous-line))
+
 
 (provide 'init-evil)
