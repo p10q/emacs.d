@@ -982,5 +982,7 @@ If INCLUSIVE is t, the text object is inclusive."
 ;(define-key evil-normal-state-map (kbd "C-f") #'+ivy/project-search)
 (define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
 
+(setq evil-vsplit-window-right t)
+(setq evil-split-window-below t)
 
 (provide 'init-evil)
