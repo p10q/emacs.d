@@ -227,6 +227,7 @@ You still need modify `package-archives' in \"init-elpa.el\" to PERMANENTLY use 
 (require-package 'lua-mode)
 (require-package 'yaml-mode)
 (require-package 'paredit)
+(require-package 'parinfer)
 (require-package 'xr) ; required by pyim
 (require-package 'findr)
 (require-package 'diredfl) ; font lock for `dired-mode'

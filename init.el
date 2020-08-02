@@ -191,4 +191,5 @@
 ;;; End:
 (put 'erase-buffer 'disabled nil)
 
-(load-theme 'solarized-light t)
+;(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)

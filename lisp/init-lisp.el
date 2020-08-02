@@ -22,15 +22,23 @@
 ;; A quick way to jump to the definition of a function given its key binding
 (global-set-key (kbd "C-h K") 'find-function-on-key)
 
-(with-eval-after-load 'paredit
-  (diminish 'paredit-mode " Par"))
+(with-eval-after-load 'parinfer
+  (progn
+    (setq parinfer-extensions
+          '(defaults       ; should be included.
+            pretty-parens  ; different paren styles for different modes.
+            evil           ; If you use Evil.
+            lispy          ; If you use Lispy. With this extension, you should install Lispy and do not enable lispy-mode directly.
+            paredit        ; Introduce some paredit commands.
+            smart-tab      ; C-b & C-f jump positions and smart shift with tab & S-tab.
+            smart-yank))   ; Yank behavior depend on mode.
+    (add-hook 'clojure-mode-hook #'parinfer-mode)
+    (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'common-lisp-mode-hook #'parinfer-mode)
+    (add-hook 'scheme-mode-hook #'parinfer-mode)
+    (add-hook 'lisp-mode-hook #'parinfer-mode)))
 
-(defvar paredit-minibuffer-commands '(eval-expression
-                                      pp-eval-expression
-                                      eval-expression-with-eldoc
-                                      ibuffer-do-eval
-                                      ibuffer-do-view-and-eval)
-  "Interactive commands for which paredit should be enabled in the minibuffer.")
+(global-set-key (kbd "C-,") 'parinfer-toggle-mode)
 
 ;; @see https://github.com/slime/slime
 (with-eval-after-load 'slime
@@ -43,7 +51,7 @@
 ;; ----------------------------------------------------------------------------
 (defun sanityinc/lisp-setup ()
   "Enable features useful in any Lisp mode."
-  (enable-paredit-mode)
+  (parinfer-mode)
   (rainbow-delimiters-mode t)
   (turn-on-eldoc-mode))
 

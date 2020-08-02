@@ -3,6 +3,8 @@
   (define-key neotree-mode-map (kbd "j") 'neotree-next-line)
   (define-key neotree-mode-map (kbd "l") 'neotree-enter)
   (define-key neotree-mode-map (kbd "h") 'neotree-select-previous-sibling-node)
+  (define-key neotree-mode-map (kbd "v") 'neotree-enter-vertical-split)
+  (define-key neotree-mode-map (kbd "s") 'neotree-enter-horizontal-split)
   (define-key neotree-mode-map (kbd "c") 'neotree-create-node)
   (define-key neotree-mode-map (kbd "r") 'neotree-rename-node)
   (define-key neotree-mode-map (kbd "d") 'neotree-delete-node)

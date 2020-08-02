@@ -181,13 +181,13 @@
         org-todo
         orgtbl-self-insert-command
         package-menu-execute
-        paredit-backward-delete
-        paredit-backward-kill-word
-        paredit-close-round
-        paredit-doublequote
-        paredit-newline
-        paredit-open-round
-        paredit-semicolon
+        ; paredit-backward-delete
+        ; paredit-backward-kill-word
+        ; paredit-close-round
+        ; paredit-doublequote
+        ; paredit-newline
+        ; paredit-open-round
+        ; paredit-semicolon
         pcomplete
         previous-history-element
         previous-line

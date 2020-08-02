@@ -280,7 +280,7 @@ If the character before and after CH is space or tab, CH is NOT slash"
              (xref--xref-buffer-mode . emacs)
              ;;(message-mode . emacs)
              (epa-key-list-mode . emacs)
-             (fundamental-mode . emacs)
+             ;(fundamental-mode . emacs)
              (weibo-timeline-mode . emacs)
              (weibo-post-mode . emacs)
              (woman-mode . emacs)
@@ -577,6 +577,7 @@ If INCLUSIVE is t, the text object is inclusive."
   "sh" 'my-select-from-search-text-history
   "rjs" 'run-js
   "er" 'js-send-region
+  "re" 'js-send-region
   "eb" 'js-send-buffer
   "ee" 'js-send-last-sexp
   "jsb" 'js-clear-send-buffer
@@ -981,6 +982,18 @@ If INCLUSIVE is t, the text object is inclusive."
 (define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
 ;(define-key evil-normal-state-map (kbd "C-f") #'+ivy/project-search)
 (define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
+(define-key evil-normal-state-map (kbd "e") (lambda ()
+                                              (interactive) (progn
+                                                              (save-excursion
+                                                                (call-interactively 'evil-visual-char)
+                                                                (call-interactively 'evil-a-paragraph)
+                                                                (js-send-region)
+                                                                (call-interactively 'evil-escape))
+                                                              (recenter nil))))
+(define-key evil-normal-state-map (kbd "s") (lambda ()
+                                              (interactive) (progn
+                                                              (js-send-region)
+                                                              (call-interactively 'evil-escape))))
 
 (setq evil-vsplit-window-right t)
 (setq evil-split-window-below t)
