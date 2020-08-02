@@ -193,3 +193,10 @@
 
 ;(load-theme 'solarized-light t)
 (load-theme 'solarized-dark t)
+
+(add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
+
+(with-eval-after-load 'rjsx-mode
+  ;; {{ I hate the hotkeys to hide things
+  (define-key rjsx-mode-map "<" 'rjsx-electric-lt)
+  (define-key rjsx-mode-map ">" 'rjsx-electric-gt))
