@@ -196,7 +196,45 @@
 
 (add-hook 'after-change-major-mode-hook (lambda() (electric-indent-mode -1)))
 
+; rjsx
 (with-eval-after-load 'rjsx-mode
   ;; {{ I hate the hotkeys to hide things
   (define-key rjsx-mode-map "<" 'rjsx-electric-lt)
   (define-key rjsx-mode-map ">" 'rjsx-electric-gt))
+
+                                        ; tide
+;; (defun setup-tide-mode ()
+;;   (interactive)
+;;   (tide-setup)
+;;   (flycheck-mode +1)
+;;   ;(setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;   (eldoc-mode +1)
+;;   (tide-hl-identifier-mode +1)
+;;   ;; company is an optional dependency. You have to
+;;   ;; install it separately via package-install
+;;   ;; `M-x package-install [ret] company`
+;;   (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+                                        ;(add-hook 'before-save-hook 'tide-format-before-save)
+
+                                        ;(add-hook 'typescript-mode-hook #'setup-tide-mode)
+                                        ;(add-hook 'js2-mode-hook #'setup-tide-mode)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+
+
+;; (require 'flycheck)
+;; ;; disable jshint since we prefer eslint checking
+;; (setq-default flycheck-disabled-checkers
+;;   (append flycheck-disabled-checkers
+;;     '(javascript-jshint)))
+
+;; ;; use eslint with web-mode for jsx files
+;; (flycheck-add-mode 'javascript-eslint 'web-mode)
+;; (flycheck-add-mode 'javascript-eslint 'javascript-mode)
+;(setq flycheck-javascript-standard-executable "/usr/bin/standardx")
+
+;(setq xref-js2-search-program 'rg)

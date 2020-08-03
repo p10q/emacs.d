@@ -982,6 +982,8 @@ If INCLUSIVE is t, the text object is inclusive."
 (define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
 ;(define-key evil-normal-state-map (kbd "C-f") #'+ivy/project-search)
 (define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
+(define-key evil-normal-state-map (kbd "gd") #'dumb-jump-go)
+
 (define-key evil-normal-state-map (kbd "e") (lambda ()
                                               (interactive) (progn
                                                               (save-excursion

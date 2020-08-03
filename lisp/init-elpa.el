@@ -108,7 +108,13 @@
     workgroups2
     zoutline
     company-c-headers
-    company-statistics)
+    company-statistics
+    prettier-js
+    ;tide
+    ;flycheck
+    ;xref-js2
+    dumb-jump
+    )
   "Packages to install from melpa-unstable.")
 
 (defvar melpa-stable-banned-packages nil
@@ -140,7 +146,7 @@
         ;; }}
         ))
 
-(defvar my-ask-elpa-mirror t)
+(defvar my-ask-elpa-mirror nil)
 (when (and (not noninteractive) ; no popup in batch mode
            my-ask-elpa-mirror
            (not (file-exists-p (file-truename (concat my-emacs-d "elpa"))))
@@ -335,6 +341,11 @@ You still need modify `package-archives' in \"init-elpa.el\" to PERMANENTLY use 
 ;; (require-package 'langtool) ; my own patched version is better
 (require-package 'typescript-mode)
 (require-package 'edit-server)
+;(require-package 'tide)
+(require-package 'prettier-js)
+;(require-package 'flycheck)
+;(require-package 'xref-js2)
+(require-package 'dumb-jump)
 
 ;; {{ Fixed expiring GNU ELPA keys
 ;; GNU ELPA GPG key will expire on Sep-2019. So we need install this package to
