@@ -984,18 +984,52 @@ If INCLUSIVE is t, the text object is inclusive."
 (define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
 (define-key evil-normal-state-map (kbd "gd") #'dumb-jump-go)
 
-(define-key evil-normal-state-map (kbd "e") (lambda ()
-                                              (interactive) (progn
-                                                              (save-excursion
-                                                                (call-interactively 'evil-visual-char)
-                                                                (call-interactively 'evil-a-paragraph)
-                                                                (js-send-region)
-                                                                (call-interactively 'evil-escape))
-                                                              (recenter nil))))
-(define-key evil-normal-state-map (kbd "s") (lambda ()
-                                              (interactive) (progn
-                                                              (js-send-region)
-                                                              (call-interactively 'evil-escape))))
+(defun lisp-evil-normal-mode-setup ()
+  (progn
+    (evil-local-set-key 'normal "e" (lambda () (interactive) (progn
+                                                               (save-excursion
+                                                                 (call-interactively 'evil-visual-char)
+                                                                 (call-interactively 'evil-a-paragraph)
+                                                                 (call-interactively 'slime-eval-region)
+                                                                 (call-interactively 'evil-escape))
+                                                               (recenter nil))))
+    (evil-local-set-key 'normal "s" (lambda () (interactive) (progn
+                                                               (call-interactively 'slime-eval-region)
+                                                               (call-interactively 'evil-escape))))))
+
+(add-hook 'lisp-mode-hook 'lisp-evil-normal-mode-setup)
+
+(defun js-evil-normal-mode-setup ()
+  (progn
+    (evil-local-set-key 'normal "e" (lambda () (interactive) (progn
+                                                               (save-excursion
+                                                                 (call-interactively 'evil-visual-char)
+                                                                 (call-interactively 'evil-a-paragraph)
+                                                                 (call-interactively 'js-send-region)
+                                                                 (call-interactively 'evil-escape))
+                                                               (recenter nil))))
+    (evil-local-set-key 'normal "s" (lambda () (interactive) (progn
+                                                               (call-interactively 'js-send-region)
+                                                               (call-interactively 'evil-escape))))))
+
+
+(add-hook 'js-mode-hook 'js-evil-normal-mode-setup)
+
+(defun python-evil-normal-mode-setup ()
+  (progn
+    (evil-local-set-key 'normal "e" (lambda () (interactive) (progn
+                                                               (save-excursion
+                                                                 (call-interactively 'evil-visual-char)
+                                                                 (call-interactively 'evil-a-paragraph)
+                                                                 (call-interactively 'elpy-shell-send-region-or-buffer)
+                                                                 (call-interactively 'evil-escape))
+                                                               (recenter nil))))
+    (evil-local-set-key 'normal "s" (lambda () (interactive) (progn
+                                                               (call-interactively 'elpy-shell-send-region-or-buffer)
+                                                               (call-interactively 'evil-escape))))))
+
+
+(add-hook 'python-mode-hook 'python-evil-normal-mode-setup)
 
 (setq evil-vsplit-window-right t)
 (setq evil-split-window-below t)

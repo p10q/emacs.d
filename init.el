@@ -225,7 +225,6 @@
                                         ;(add-hook 'js2-mode-hook #'setup-tide-mode)
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 
-
 ;; (require 'flycheck)
 ;; ;; disable jshint since we prefer eslint checking
 ;; (setq-default flycheck-disabled-checkers
