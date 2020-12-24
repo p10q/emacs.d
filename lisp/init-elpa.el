@@ -114,6 +114,7 @@
     ;flycheck
     ;xref-js2
     dumb-jump
+    tmux-pane
     )
   "Packages to install from melpa-unstable.")
 

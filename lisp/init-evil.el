@@ -976,10 +976,15 @@ If INCLUSIVE is t, the text object is inclusive."
   ;; Here is the workaround
   (setq evil-default-cursor t))
 
-(define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
-(define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
+;(define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
+;(define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
+;(define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
+;(define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
+(define-key evil-normal-state-map (kbd "C-h") #'tmux-pane-omni-window-left)
+(define-key evil-normal-state-map (kbd "C-j") #'tmux-pane-omni-window-down)
+(define-key evil-normal-state-map (kbd "C-k") #'tmux-pane-omni-window-up)
+(define-key evil-normal-state-map (kbd "C-l") #'tmux-pane-omni-window-right)
+
 ;(define-key evil-normal-state-map (kbd "C-f") #'+ivy/project-search)
 (define-key evil-normal-state-map (kbd "C-n") #'neotree-toggle)
 (define-key evil-normal-state-map (kbd "gd") #'dumb-jump-go)

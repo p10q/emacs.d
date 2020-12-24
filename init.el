@@ -225,6 +225,7 @@
                                         ;(add-hook 'js2-mode-hook #'setup-tide-mode)
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 
+(require 'tmux-pane)
 ;; (require 'flycheck)
 ;; ;; disable jshint since we prefer eslint checking
 ;; (setq-default flycheck-disabled-checkers
@@ -234,6 +235,8 @@
 ;; ;; use eslint with web-mode for jsx files
 ;; (flycheck-add-mode 'javascript-eslint 'web-mode)
 ;; (flycheck-add-mode 'javascript-eslint 'javascript-mode)
-;(setq flycheck-javascript-standard-executable "/usr/bin/standardx")
+                                        ;(setq flycheck-javascript-standard-executable "/usr/bin/standardx")
 
-;(setq xref-js2-search-program 'rg)
+                                        ;(setq xref-js2-search-program 'rg)
+(setq elpy-rpc-python-command "python3")
+(setq python-shell-interpreter "python3")
